@@ -29,6 +29,7 @@ int main(int ac, char **av)
         pong.window.clear();
         // Draw the sprites
         pong.player1.update();
+        pong.player2.update();
         pong.ball.update();
         pong.window.draw(pong.ball.sprite);
         pong.window.draw(pong.player1.racket.sprite);

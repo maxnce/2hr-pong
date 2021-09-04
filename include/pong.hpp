@@ -61,6 +61,7 @@ class Ball {
 
         void reset() {
             position.set_to_middle_screen();
+            set_random_movement();
         }
 
         void set_random_movement(void) {
@@ -124,6 +125,8 @@ class Racket {
         void update(void) {
             speed = (up ? -6 : 0) + (down ? 6 : 0);
             origin.y += speed;
+            if (origin.y <= 67) origin.y = 67;
+            if (origin.y >= 1080 - 135) origin.y  = 1080 - 135;
             sf::Vector2f temp_pos{origin.x, origin.y};
             sprite.setPosition(temp_pos);
         }
@@ -157,7 +160,7 @@ class Player {
             if (added_score == -1) {
                 racket.update();
             } else {
-                points += 1;
+                points += added_score;
                 score.setString(std::to_string(points));
                 racket.reset();
             }

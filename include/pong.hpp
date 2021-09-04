@@ -5,6 +5,10 @@
 #include <SFML/Graphics.hpp>
 #include <cstring>
 #include <iostream>
+#include <csignal>
+#include <sys/types.h>
+#include <sys/wait.h>
+#include<unistd.h>
 
 const float SCREEN_WIDTH = 1920;
 const float SCREEN_HEIGHT = 1080;
@@ -33,18 +37,16 @@ class Coordinates {
 class Sounds {
     public:
         sf::Music background;
-        sf::Music ball_hit;
-        sf::Music score;
+        sf::Music racket;
+        sf::Music goal;
+        sf::Music wall;
         Sounds() {
-            if (!background.openFromFile("assets/background.ogg"))
+            if (!background.openFromFile("assets/background.ogg") || !racket.openFromFile("assets/racket.ogg")
+                || !goal.openFromFile("assets/goal.ogg") || !wall.openFromFile("assets/wall.ogg"))
                 exit(EXIT_FAILURE);
             background.play();
             background.setLoop(true);
             background.setVolume(40);
-            /* if (!ball_hit.openFromFile("ball_hit.ogg"))
-                exit(EXIT_FAILURE);
-            if (!score.openFromFile("ball_hit.ogg"))
-                exit(EXIT_FAILURE); */
         }
 };
 
@@ -193,5 +195,8 @@ void game_loop(Game &pong, sf::Event event);
 void handle_key_pressed(Game &pong, sf::Event event);
 void handle_key_released(Game &pong, sf::Event event);
 void ball_movement(Game &pong);
+int play_racket_sound(Game &pong);
+int play_wall_sound(Game &pong);
+int play_goal_sound(Game &pong);
 
 #endif

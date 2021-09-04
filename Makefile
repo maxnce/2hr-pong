@@ -14,6 +14,7 @@ SRC	=	source/main.cpp \
 		source/game_loop.cpp \
 		source/handle_key.cpp \
 		source/ball_movement.cpp \
+		source/play_hit_sound.cpp \
 
 OBJ 	=	$(SRC:.cpp=.o) $(MAIN:.cpp=.o)
 

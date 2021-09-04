@@ -11,6 +11,9 @@ CSFML = -l csfml-graphics -l csfml-window -l csfml-system -l csfml-network -l cs
 SFML = -l sfml-graphics -l sfml-window -l sfml-system -l sfml-network -l sfml-audio -lfreetype -DSFML_STATIC
 
 SRC	=	source/main.cpp \
+		source/game_loop.cpp \
+		source/handle_key.cpp \
+		source/ball_movement.cpp \
 
 OBJ 	=	$(SRC:.cpp=.o) $(MAIN:.cpp=.o)
 
